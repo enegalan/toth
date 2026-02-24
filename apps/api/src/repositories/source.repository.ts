@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Source } from '@toth/database';
@@ -12,6 +12,14 @@ export class SourceRepository {
 
   async findById(id: string): Promise<Source | null> {
     return this.repo.findOne({ where: { id } });
+  }
+
+  async findByIdOrFail(id: string): Promise<Source> {
+    const source = await this.findById(id);
+    if (!source) {
+      throw new NotFoundException('Source not found');
+    }
+    return source;
   }
 
   async findAll(): Promise<Source[]> {

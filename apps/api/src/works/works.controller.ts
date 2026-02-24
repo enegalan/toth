@@ -1,4 +1,4 @@
-import { Controller, Get, NotFoundException, Param, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseUUIDPipe } from '@nestjs/common';
 import { WorkRepository } from '../repositories/work.repository';
 import { SavedWorkRepository } from '../repositories/saved-work.repository';
 import { WorkDetailDto } from './work.dto';
@@ -14,8 +14,7 @@ export class WorksController {
   async findOne(
     @Param('id', ParseUUIDPipe) id: string,
   ): Promise<WorkDetailDto> {
-    const work = await this.workRepo.findById(id);
-    if (!work) throw new NotFoundException('Work not found');
+    const work = await this.workRepo.findByIdOrFail(id);
     await this.workRepo.incrementViewCount(id);
     const savedCountMap = await this.savedWorkRepo.getSaveCountByWorkIds([id]);
     const saved_count = savedCountMap.get(id) ?? 0;

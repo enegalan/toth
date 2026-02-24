@@ -1,10 +1,15 @@
 import type { RawEditionRecord, SourceConnector } from '@toth/shared';
-import { connectorFetchOptions, delayBetweenPages, fetchWithRetry, throttle } from './http';
+import {
+  DELAY_BETWEEN_BOOK_PAGES_MS,
+  DELAY_BETWEEN_PAGES_MS,
+  connectorFetchOptions,
+  delayBetweenPages,
+  fetchWithRetry,
+  throttle,
+} from './http';
 
 const BASE = 'https://epub.gratis';
 const LISTING_PAGE_1 = `${BASE}/?s=`;
-const DELAY_BETWEEN_PAGES_MS = 1500;
-const DELAY_BETWEEN_BOOK_PAGES_MS = 400;
 const MAX_PAGES = 100;
 
 /**

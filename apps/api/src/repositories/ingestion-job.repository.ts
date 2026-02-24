@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { IngestionJob, IngestionJobStatus } from '@toth/database';
@@ -18,6 +18,14 @@ export class IngestionJobRepository {
 
   async findById(id: string): Promise<IngestionJob | null> {
     return this.repo.findOne({ where: { id }, relations: ['source'] });
+  }
+
+  async findByIdOrFail(id: string): Promise<IngestionJob> {
+    const job = await this.findById(id);
+    if (!job) {
+      throw new NotFoundException('Job not found');
+    }
+    return job;
   }
 
   async updateStatus(

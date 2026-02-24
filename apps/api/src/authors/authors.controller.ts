@@ -1,4 +1,4 @@
-import { Controller, Get, NotFoundException, Param, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseUUIDPipe } from '@nestjs/common';
 import { AuthorRepository } from '../repositories/author.repository';
 import { AuthorDto } from './author.dto';
 
@@ -10,8 +10,7 @@ export class AuthorsController {
   async findOne(
     @Param('id', ParseUUIDPipe) id: string,
   ): Promise<AuthorDto> {
-    const author = await this.authorRepo.findById(id);
-    if (!author) throw new NotFoundException('Author not found');
+    const author = await this.authorRepo.findByIdOrFail(id);
     return AuthorDto.from(author);
   }
 }

@@ -1,5 +1,13 @@
 import { Author, Edition, Work } from '@toth/database';
 
+function pickFirstCoverUrl(
+  editions: Array<{ cover_url?: string | null }>,
+): string | null {
+  return editions
+    .map((edition) => edition.cover_url)
+    .find((url): url is string => !!url) ?? null;
+}
+
 export class EditionItemDto {
   id: string;
   license: string;
@@ -48,8 +56,7 @@ export class WorkDetailDto {
     extras?: { saved_count: number },
   ): WorkDetailDto {
     const editions = work.editions ?? [];
-    const coverUrl =
-      editions.map((e) => e.cover_url).find((u): u is string => !!u) ?? null;
+    const coverUrl = pickFirstCoverUrl(editions);
     return {
       id: work.id,
       canonical_title: work.canonical_title,
@@ -111,9 +118,8 @@ export class WorkSummaryDto {
   ): WorkSummaryDto {
     const author_name = work.author?.canonical_name ?? 'Unknown';
     const editions = work.editions ?? [];
-    const licenses = [...new Set(editions.map((e) => e.license))];
-    const cover_url =
-      editions.map((e) => e.cover_url).find((u): u is string => !!u) ?? null;
+    const licenses = [...new Set(editions.map((edition) => edition.license))];
+    const cover_url = pickFirstCoverUrl(editions);
     return {
       id: work.id,
       canonical_title: work.canonical_title,

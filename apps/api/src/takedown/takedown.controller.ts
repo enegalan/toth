@@ -1,26 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { IsEmail, IsOptional, IsString, IsUUID, MaxLength, MinLength } from 'class-validator';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TakedownRequest } from '@toth/database';
-
-class TakedownIntakeDto {
-  @IsEmail()
-  claimant_email: string;
-
-  @IsString()
-  @MinLength(10)
-  @MaxLength(2000)
-  reason: string;
-
-  @IsOptional()
-  @IsUUID()
-  work_id?: string;
-
-  @IsOptional()
-  @IsUUID()
-  edition_id?: string;
-}
+import { TakedownIntakeDto } from './takedown.dto';
 
 @Controller('takedown')
 export class TakedownController {

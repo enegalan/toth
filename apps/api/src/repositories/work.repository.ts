@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Work } from '@toth/database';
@@ -22,6 +22,14 @@ export class WorkRepository {
       where: { id },
       relations: ['author', 'editions', 'editions.source'],
     });
+  }
+
+  async findByIdOrFail(id: string): Promise<Work> {
+    const work = await this.findById(id);
+    if (!work) {
+      throw new NotFoundException('Work not found');
+    }
+    return work;
   }
 
   async incrementViewCount(id: string): Promise<void> {

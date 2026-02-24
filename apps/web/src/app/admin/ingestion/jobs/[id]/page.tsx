@@ -294,13 +294,36 @@ export default function IngestionJobDetailPage() {
 
         {job.error_message && (
           <div
-            className="admin-card mb-8 border-red-200 bg-red-50/80"
+            className="admin-card mb-8 border border-red-200/80 bg-red-50/90 px-4 py-3 sm:px-5 sm:py-4"
             role="alert"
           >
-            <h3 className="text-sm font-semibold text-red-800">Error</h3>
-            <p className="mt-1 break-words font-mono text-sm text-red-700">
-              {job.error_message}
-            </p>
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 rounded-full bg-red-100 p-1.5 text-red-600">
+                <svg
+                  aria-hidden
+                  className="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l6.518 11.59C19.02 16.42 18.246 18 16.813 18H3.187c-1.433 0-2.207-1.58-1.448-3.311l6.518-11.59Zm1.743 3.401a.75.75 0 0 0-.75.75v3.75a.75.75 0 0 0 1.5 0V7.25a.75.75 0 0 0-.75-.75Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-sm font-semibold text-red-800">
+                  Error while running ingestion job
+                </h3>
+                <p className="mt-1 text-sm text-red-700">
+                  The worker reported the following error message:
+                </p>
+                <pre className="mt-3 max-h-40 overflow-auto rounded-md bg-red-900/5 px-3 py-2 font-mono text-xs text-red-800">
+                  {job.error_message}
+                </pre>
+              </div>
+            </div>
           </div>
         )}
 

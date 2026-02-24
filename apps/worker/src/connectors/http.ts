@@ -6,6 +6,9 @@ const DEFAULT_HEADERS: HeadersInit = {
   Accept: 'application/json, application/xml, text/xml, */*',
 };
 
+export const DELAY_BETWEEN_PAGES_MS = 1500;
+export const DELAY_BETWEEN_BOOK_PAGES_MS = 400;
+
 export function connectorFetchOptions(): RequestInit {
   return { headers: DEFAULT_HEADERS };
 }

@@ -1,13 +1,8 @@
 import type { RawEditionRecord, SourceConnector } from '@toth/shared';
-import {
-  connectorFetchOptions,
-  delayBetweenPages,
-  fetchWithRetry,
-} from './http';
+import { DELAY_BETWEEN_PAGES_MS, connectorFetchOptions, delayBetweenPages, fetchWithRetry } from './http';
 
 const BASE = 'https://www.epubbooks.com';
 const SUBJECTS_URL = `${BASE}/subjects`;
-const DELAY_BETWEEN_PAGES_MS = 1500;
 
 /** Parse /subjects page: extract subject paths from div.row links (href="/subject/xxx"). */
 function parseSubjectPaths(html: string): string[] {
