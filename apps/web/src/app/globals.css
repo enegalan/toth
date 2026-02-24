@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-surface: 250 246 242;
+    --color-border: 231 229 228;
+    --color-primary: 59 130 246;
+    --color-brand: 92 64 51;
+    --color-brand-200: 224 205 192;
+    --radius-card: 1rem;
+    --scrollbar-thumb: 214 211 209;
+    --scrollbar-track: 245 245 244;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--scrollbar-thumb)) rgb(var(--scrollbar-track));
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgb(var(--scrollbar-track));
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgb(var(--scrollbar-thumb));
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: 163 163 163;
+  }
+
+  input[type="text"]:not(.search-bar-input),
+  input[type="search"]:not(.search-bar-input),
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
+    @apply rounded-lg border border-stone-200 bg-white px-3 py-2 text-stone-900 outline-none transition-colors;
+    @apply placeholder:text-stone-400;
+  }
+  input[type="text"]:not(.search-bar-input):focus,
+  input[type="search"]:not(.search-bar-input):focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgb(var(--color-primary));
+    box-shadow: 0 0 0 2px rgb(var(--color-primary) / 0.2);
+  }
+
+  input.search-bar-input {
+    border: none !important;
+    border-radius: 0;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+  input.search-bar-input:focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  select {
+    @apply cursor-pointer appearance-none bg-[length:1rem_1rem] bg-[right_0.5rem_center] bg-no-repeat pr-9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23787572'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  }
+
+  select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23453c3a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  }
+
+  input[type="checkbox"] {
+    @apply h-4 w-4 cursor-pointer appearance-none rounded border-2 border-stone-300 bg-white transition-colors;
+    @apply focus:outline-none;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgb(var(--color-primary) / 0.5);
+  }
+  input[type="checkbox"]:checked {
+    border-color: rgb(var(--color-primary));
+    background-color: rgb(var(--color-primary));
+    background-size: 0.65rem 0.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  }
+
+  input[type="checkbox"]:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  ::selection {
+    background: rgb(var(--color-primary));
+    color: white;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply rounded-2xl border border-stone-200/80 bg-white shadow-card transition-all duration-200;
+  }
+  .card:hover {
+    @apply shadow-card-hover;
+    border-color: rgb(var(--color-brand-200));
+  }
+  .admin-card {
+    @apply rounded-2xl border border-stone-200/80 bg-white shadow-card transition-all duration-200;
+  }
+  .admin-card:hover {
+    @apply shadow-card-hover;
+    border-color: rgb(var(--color-brand-200));
+  }
+  .admin-input {
+    @apply rounded-xl border border-stone-200 bg-stone-50/80 px-3 py-2 text-sm text-stone-800 outline-none transition-colors;
+  }
+  .admin-input:focus {
+    border-color: rgb(var(--color-primary));
+    background-color: white;
+    box-shadow: 0 0 0 2px rgb(var(--color-primary) / 0.2);
+  }
+
+  .btn-primary {
+    background-color: rgb(var(--color-primary));
+    color: white;
+  }
+  .btn-primary:hover {
+    filter: brightness(0.92);
+  }
+}

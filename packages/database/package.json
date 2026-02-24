@@ -1,0 +1,21 @@
+{
+  "name": "@toth/database",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "typeorm": "^0.3.19"
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.2.1",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.2.1"
+  }
+}

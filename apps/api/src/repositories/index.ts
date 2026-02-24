@@ -1,0 +1,9 @@
+export { AuthorRepository } from './author.repository';
+export { EditionRepository } from './edition.repository';
+export { IngestionJobRepository } from './ingestion-job.repository';
+export { SavedWorkRepository } from './saved-work.repository';
+export { SessionRepository } from './session.repository';
+export { SourceRepository } from './source.repository';
+export { UserRepository } from './user.repository';
+export { WorkRepository } from './work.repository';
+export { WorkRatingRepository } from './work-rating.repository';

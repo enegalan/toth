@@ -1,0 +1,26 @@
+{
+  "name": "toth",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev:api": "npm run dev -w apps/api",
+    "dev:web": "npm run dev -w apps/web",
+    "dev:worker": "npm run dev -w apps/worker",
+    "dev:all": "npm run dev:api & npm run dev:web & npm run dev:worker",
+    "start:api": "npm run start -w apps/api",
+    "start:web": "npm run start -w apps/web",
+    "start:worker": "npm run start -w apps/worker",
+    "start:all": "npm run start:api & npm run start:web & npm run start:worker"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7"
+  }
+}
