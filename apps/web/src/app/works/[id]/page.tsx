@@ -13,6 +13,7 @@ import {
   removeSaved,
 } from '@/lib/api';
 import { useAuth } from '@/contexts/auth-context';
+import { Skeleton } from '@/components/Skeleton';
 
 function BookIcon({ className }: { className?: string }) {
   return (
@@ -58,27 +59,29 @@ function WorkSkeleton() {
   return (
     <main className="min-h-[60vh]">
       <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6">
-        <div className="mb-6 h-5 w-24 animate-pulse rounded bg-stone-200" />
+        <div className="mb-6">
+          <Skeleton className="h-5 w-24 rounded" />
+        </div>
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-10">
-          <div className="h-72 w-44 shrink-0 animate-pulse rounded-2xl bg-stone-200 sm:h-80 sm:w-52" />
+          <Skeleton className="h-72 w-44 shrink-0 rounded-2xl sm:h-80 sm:w-52" />
           <div className="min-w-0 flex-1 space-y-4">
-            <div className="h-8 w-3/4 animate-pulse rounded-lg bg-stone-200 sm:h-9" />
-            <div className="h-5 w-1/2 animate-pulse rounded bg-stone-200" />
+            <Skeleton className="h-8 w-3/4 rounded-lg sm:h-9" />
+            <Skeleton className="h-5 w-1/2 rounded" />
             <div className="flex flex-wrap gap-2 pt-2">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-7 w-16 animate-pulse rounded-full bg-stone-200" />
+                <Skeleton key={i} className="h-7 w-16 rounded-full" />
               ))}
             </div>
             <div className="flex gap-4 pt-4">
-              <div className="h-6 w-20 animate-pulse rounded bg-stone-200" />
-              <div className="h-8 w-32 animate-pulse rounded-lg bg-stone-200" />
+              <Skeleton className="h-6 w-20 rounded" />
+              <Skeleton className="h-8 w-32 rounded-lg" />
             </div>
           </div>
         </div>
         <div className="mt-10 space-y-3">
-          <div className="h-4 w-full animate-pulse rounded bg-stone-200" />
-          <div className="h-4 w-5/6 animate-pulse rounded bg-stone-200" />
-          <div className="h-4 w-4/5 animate-pulse rounded bg-stone-200" />
+          <Skeleton className="h-4 w-full rounded" />
+          <Skeleton className="h-4 w-5/6 rounded" />
+          <Skeleton className="h-4 w-4/5 rounded" />
         </div>
       </div>
     </main>
@@ -329,7 +332,7 @@ export default function WorkDetailPage() {
                   }`}
                 >
                   {saveSubmitting ? (
-                    <span className="inline-block h-5 w-5 animate-pulse rounded bg-stone-300" />
+                    <Skeleton className="inline-block h-5 w-5 rounded" />
                   ) : (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

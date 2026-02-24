@@ -31,7 +31,8 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fadeIn 0.35s ease-out',
-        'shimmer': 'shimmer 1.5s ease-in-out infinite',
+        shimmer: 'shimmer 1.5s ease-in-out infinite',
+        skeleton: 'skeleton 1.4s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -41,6 +42,10 @@ module.exports = {
         shimmer: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.6' },
+        },
+        skeleton: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
         },
       },
     },
